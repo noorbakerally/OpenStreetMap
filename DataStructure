@@ -1,0 +1,58 @@
+Open Street Map
+================
+
+Data Structure
+---------------
+- object has:
+	- geometry
+		- Geometry definition differs for different data types
+	- tags
+		- list of key/value pairs
+
+Elements
+---------
+There are three basic types of elements which can have one or more tags. They are:
+1. Node
+2. Way
+3. Relation
+
+### Node ![](https://wiki.openstreetmap.org/w/images/thumb/7/76/Osm_element_node.svg/20px-Osm_element_node.svg.png)
+- represents a specific point or point of interest on the earth's surface 
+- consists at least an id number and a pair of coordinates (latitude and longitude)
+- are also used to define the shape of a way
+
+### Way![](https://wiki.openstreetmap.org/w/images/thumb/e/ee/Osm_element_way.svg/20px-Osm_element_way.svg.png) ![](https://wiki.openstreetmap.org/w/images/thumb/3/38/Osm_element_closedway.svg/20px-Osm_element_closedway.svg.png)![](https://wiki.openstreetmap.org/w/images/thumb/e/e6/Osm_element_area.svg/20px-Osm_element_area.svg.png)
+	
+- ordered list of nodes that define a polyline
+- Represents:
+	-  linear features as rivers and roads
+	- boundaries of areas (solid polygons) such as a building or forest
+		- a closed way, first node = last node
+	- area with holes or boundaries having > 2000 nodes cannot be represented using a single way
+		- a multipolygon relation data structure is needed
+	- A way can be open or closed
+	- Open way ![](https://wiki.openstreetmap.org/w/images/thumb/e/ee/Osm_element_way.svg/20px-Osm_element_way.svg.png)
+		- way describing linear feature which does not share a first and last node
+	- Closed way ![](https://wiki.openstreetmap.org/w/images/thumb/3/38/Osm_element_closedway.svg/20px-Osm_element_closedway.svg.png)![](https://wiki.openstreetmap.org/w/images/thumb/e/e6/Osm_element_area.svg/20px-Osm_element_area.svg.png)
+		- one whose last node on the way is also the first node
+		- may be interpreted as either a closed polyline or area
+		- Area![](https://wiki.openstreetmap.org/w/images/thumb/e/e6/Osm_element_area.svg/20px-Osm_element_area.svg.png)
+			- most closed ways are defined as areas even without tag area=yes
+
+### Relation ![](https://wiki.openstreetmap.org/w/images/thumb/4/48/Osm_element_relation.svg/20px-Osm_element_relation.svg.png)
+
+- ordered list of one or more nodes, ways and/or relations as members
+- members can have specific role within the relation	
+- A multipurpose data structure that documents a relationship between two or more data elements (nodes, ways and/or relations)
+-  Examples of relations:
+	- Route
+	- Turn restriction
+	- multipolygon describing area with holes
+- Meaning of relation should be derived from tag
+- Elements within a relation can have a role within the relation
+- Types of relation:
+
+### Tag
+
+- all types of elements (nodes, ways, relations) can have tags
+- describe the meaning of the particular element to which they are attached
